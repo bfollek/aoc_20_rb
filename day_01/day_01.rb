@@ -10,7 +10,6 @@ end
 # part_1: 744475
 def part_1(file_name)
   entries = get_entries(file_name)
-  #File.foreach(file_name) {|line| entries << line.chomp.to_i }
   entries.each_with_index do |entry_i, i|
     entries.each_with_index do |entry_j, j|
       case
