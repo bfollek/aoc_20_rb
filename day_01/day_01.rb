@@ -23,4 +23,24 @@ def part_1(file_name)
   end
 end
 
+# Find the _3_ entries that sum to 2020.
+# part_2: 70276940
+def part_2(file_name)
+  entries = get_entries(file_name)
+  entries.each_with_index do |entry_i, i|
+    entries.each_with_index do |entry_j, j|
+      entries.each_with_index do |entry_k, k|
+        case
+        when i == j || j == k
+          next
+        when entry_i + entry_j + entry_k == GOAL
+          return entry_i * entry_j * entry_k
+        else
+        end
+      end
+    end
+  end
+end
+
 puts "part_1: #{part_1 '../data/day_01.txt'}"
+puts "part_2: #{part_2 '../data/day_01.txt'}"
