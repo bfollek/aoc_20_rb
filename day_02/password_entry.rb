@@ -7,7 +7,7 @@ class PasswordEntry
 
   RE = /\A(?<min>\d+)-(?<max>\d+)\s+(?<required>\w):\s+(?<password>.*)\Z/
 
-  sig { params(line: String).void }
+  sig {params(line: String).void}
   def initialize(line)
     matches = line.match(RE)
     if matches
