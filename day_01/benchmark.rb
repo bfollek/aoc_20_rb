@@ -5,7 +5,7 @@ require 'benchmark'
 
 require_relative 'day_01'
 
-day_01 = Day01.new '../data/day_01.txt'
+day_01 = Day01.new '../data/day_01.dat'
 Benchmark.bmbm do |x|
   x.report('part_2') { day_01.part_2 }
   x.report('part_2_opt') { day_01.part_2_opt }
