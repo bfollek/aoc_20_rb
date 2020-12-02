@@ -11,20 +11,23 @@ class Day02
   # How many passwords are valid according to their policies?
   # part_1: 414
   def part_1
-    cnt = 0
-    File.foreach(@file_name) do |line|
-      pe = PasswordEntry.new line
-      cnt += 1 if pe.part_1_valid?
-    end
-    cnt
+    looper { |pe| pe.part_1_valid? }
   end
 
   # part_2: 413
   def part_2
+    looper { |pe| pe.part_2_valid? }
+  end
+
+# -------------------------------------------------------------------
+  private
+# -------------------------------------------------------------------
+
+  def looper(&blk)
     cnt = 0
     File.foreach(@file_name) do |line|
       pe = PasswordEntry.new line
-      cnt += 1 if pe.part_2_valid?
+      cnt += 1 if yield pe
     end
     cnt
   end
