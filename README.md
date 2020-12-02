@@ -4,7 +4,7 @@ Advent of Code 2020 in ruby, with [sorbet](https://sorbet.org/)
 
 ## Day 1 - done
 
-For part 2, my first solution was a brute force triple loop. It ran fast enough. Then I added a simple optimization based on the data: If the sum of the two outer loops is already over the target sum, skip the third loop. That improved performance a couple of orders of magnitutude:
+For part 2, my first solution was a brute force triple loop. It ran fast enough. Then I tried a simple optimization based on the data: If the sum of the two outer loops is already over the target sum, skip the third loop. That improved performance a couple of orders of magnitutude:
 
 ```bash
 day_01 (main)$ ./benchmark.rb
