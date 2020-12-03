@@ -1,5 +1,7 @@
 GEM
+  remote: https://rubygems.org/
   specs:
+    minitest (5.14.2)
     sorbet (0.5.6111)
       sorbet-static (= 0.5.6111)
     sorbet-runtime (0.5.6111)
@@ -9,6 +11,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest
   sorbet
   sorbet-runtime
 
