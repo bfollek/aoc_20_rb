@@ -78,7 +78,7 @@ class Day01
   private
 # -------------------------------------------------------------------
 
-sig { returns(T::Array[Integer]) }
+  sig { returns(T::Array[Integer]) }
   def load_entries
     entries = []
     File.foreach(@file_name) do |line|
