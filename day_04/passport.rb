@@ -2,6 +2,23 @@ class Passport
 
   attr_accessor :byr, :iyr, :eyr, :hgt, :hcl, :ecl, :pid, :cid
 
+  def self.load_from_file(file_name)
+    passports = []
+    pp = Passport.new
+    File.foreach(file_name) do |line|
+      line = line.strip
+      if line == ''
+        passports << pp
+        pp = Passport.new
+      else
+        pp.parse(line)
+      end
+    end
+    # Don't forget the passport in progress when we hit EOF
+    passports << pp
+    passports
+  end
+
   def initialize
     @byr = nil
     @iyr = nil
