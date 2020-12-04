@@ -11,20 +11,21 @@ class Day03
   # "Starting at the top-left corner of your map and following a slope of right 3 and down 1, how many trees would you encounter?"
   # part_1: 207
   def part_1
+    load_grid
     slide(3, 1)
-          # load_grid
-          # p = Point.new(0, 0)
-          # cnt = 0
-          # loop do
-          #   nxt = @grid[p.y][p.x]
-          #   cnt += 1 if nxt == TREE
-          #   p = move(p, 3, 1)
-          #   return cnt if p.y == @grid.size
-          # end
   end
 
   # "What do you get if you multiply together the number of trees encountered on each of the listed slopes?"
+  # part_2: 2655892800
   def part_2
+    load_grid
+    rv = 1
+    slopes = [[1,1], [3,1], [5,1], [7,1], [1,2]]
+    slopes.each do |slope|
+      i = slide(slope[0], slope[1])
+      rv *= i
+    end
+    rv
   end
 
   # -------------------------------------------------------------------
@@ -32,14 +33,13 @@ class Day03
   # -------------------------------------------------------------------
 
   def slide(add_x, add_y)
-    load_grid
     p = Point.new(0, 0)
     cnt = 0
     loop do
       nxt = @grid[p.y][p.x]
       cnt += 1 if nxt == TREE
       p = move(p, add_x, add_y)
-      return cnt if p.y == @grid.size
+      return cnt if p.y >= @grid.size
     end
   end
 
