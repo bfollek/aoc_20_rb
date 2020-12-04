@@ -13,6 +13,7 @@ class Day04
     valid.size
   end
 
+  # part_2: 114
   def part_2
     passports = Passport.load_from_file @file_name
     valid = passports.select { |pp| pp.valid_part_2? }

@@ -57,8 +57,6 @@ class Passport
   end
 
   def valid_part_2?
-    # Make sure requried fields are present
-    return false unless valid_part_1?
     return false unless valid_byr?
     return false unless valid_iyr?
     return false unless valid_eyr?
@@ -97,7 +95,7 @@ class Passport
   end
 
   def valid_hgt?
-    matches = hgt.match(HGT_RE)
+    matches = hgt&.match(HGT_RE)
     return false unless matches
     num = matches[:num]
     unit = matches[:unit]
@@ -112,15 +110,15 @@ class Passport
   end
 
   def valid_hcl?
-    hcl.match(HCL_RE)
+    hcl&.match(HCL_RE)
   end
 
   def valid_ecl?
-    ecl.match(ECL_RE)
+    ecl&.match(ECL_RE)
   end
 
   def valid_pid?
-    pid.match(PID_RE)
+    pid&.match(PID_RE)
   end
 
 end
