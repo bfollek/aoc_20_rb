@@ -9,20 +9,14 @@ class Day04
   # part_1: 196
   def part_1
     passports = Passport.load_from_file @file_name
-    cnt = 0
-    passports.each do |pp|
-      cnt += 1 if pp.valid?
-    end
-    cnt
+    valid = passports.select { |pp| pp.valid_part_1? }
+    valid.size
   end
 
   def part_2
     passports = Passport.load_from_file @file_name
-    cnt = 0
-    #passports.each do |pp|
-    #  cnt += 1 if pp.valid?
-    #end
-    cnt
+    valid = passports.select { |pp| pp.valid_part_2? }
+    valid.size
   end
 
 end

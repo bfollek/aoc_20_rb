@@ -24,3 +24,5 @@ day_01 (main)$
 Hooking up sorbet meant some code changes that feel a bit un-rubyish, especially in the [PasswordEntry](https://github.com/bfollek/aoc_20_rb/blob/main/day_02/password_entry.rb) `initialize` method.
 
 ## Day 3 - done. Haven't done sorbet yet.
+
+## Day 4 - done. Haven't done sorbet yet.
