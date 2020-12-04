@@ -8,6 +8,7 @@ class Day03
     @file_name = file_name
   end
 
+  # "Starting at the top-left corner of your map and following a slope of right 3 and down 1, how many trees would you encounter?"
   # part_1: 207
   def part_1
     load_grid
@@ -16,10 +17,13 @@ class Day03
     loop do
       nxt = @grid[p.y][p.x]
       cnt += 1 if nxt == TREE
-      puts "cnt == #{cnt}"
-      p = move(p)
+      p = move(p, 3, 1)
       return cnt if p.y == @grid.size
     end
+  end
+
+  # "What do you get if you multiply together the number of trees encountered on each of the listed slopes?"
+  def part_2
   end
 
   # -------------------------------------------------------------------
@@ -33,9 +37,9 @@ class Day03
     end
   end
 
-  def move(point)
-    point.x = (point.x + 3) % @grid[0].size
-    point.y += 1
+  def move(point, add_x, add_y)
+    point.x = (point.x + add_x) % @grid[0].size
+    point.y += add_y
     point
   end
 
