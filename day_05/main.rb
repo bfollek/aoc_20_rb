@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
 # typed: true
 
-require_relative 'day_05'
+require_relative 'boarding_pass'
 
-day_05 = Day05.new '../data/day_05.dat'
-puts "part_1: #{day_05.part_1}"
-puts "part_2: #{day_05.part_2}"
+boarding_passes = BoardingPass.load_from_file '../data/day_05.dat'
+
+# part_1: 826
+part_1 = boarding_passes.max_by { |bp| bp.seat_id } .seat_id
+puts "part_1: #{part_1}"
