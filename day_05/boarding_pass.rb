@@ -1,24 +1,12 @@
 class BoardingPass
 
   def initialize(scan)
-    @raw_row = scan[0, 7]
-    @raw_col = scan[-3, 3]
-  end
-
-  def row
-    s = @raw_row.gsub('F', '0')
-    s = s.gsub('B', '1')
-    s.to_i(2)
-  end
-
-  def col
-    s = @raw_col.gsub('L', '0')
-    s = s.gsub('R', '1')
-    s.to_i(2)
+    @row = binary_value(scan[0, 7], 'F', 'B')
+    @col = binary_value(scan[-3, 3], 'L', 'R')
   end
 
   def seat_id
-    row * 8 + col
+    @row * 8 + @col
   end
 
   def self.load_from_file(file_name)
@@ -27,6 +15,16 @@ class BoardingPass
       boarding_passes << self.new(line.chomp)
     end
     boarding_passes
+  end
+
+# -------------------------------------------------------------------
+private
+# -------------------------------------------------------------------
+
+  def binary_value(s, zero_char, one_char)
+    s = s.gsub(zero_char, '0')
+    s = s.gsub(one_char, '1')
+    s.to_i(2)
   end
 
 end
