@@ -1,6 +1,6 @@
 # aoc_20_rb
 
-Advent of Code 2020 in ruby, with [sorbet](https://sorbet.org/)
+Advent of Code 2020 in ruby, with some [sorbet](https://sorbet.org/)
 
 ## Day 1 - done
 
@@ -23,6 +23,6 @@ day_01 (main)$
 
 Hooking up sorbet meant some code changes that feel a bit un-rubyish, especially in the [PasswordEntry](https://github.com/bfollek/aoc_20_rb/blob/main/day_02/password_entry.rb) `initialize` method.
 
-## Day 3 - done. Haven't done sorbet yet.
+## Day 3 - done. No sorbet.
 
-## Day 4 - done. Haven't done sorbet yet.
+## Day 4 - done. No sorbet.

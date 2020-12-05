@@ -18,7 +18,7 @@ class Passport
 
   def self.load_from_file(file_name)
     passports = []
-    pp = Passport.new
+    pp = self.new
     File.foreach(file_name) do |line|
       line = line.strip
       if line == ''
