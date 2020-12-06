@@ -11,10 +11,8 @@ i = groups.sum { |g| g.answers.size }
 puts "part_1: #{i}"
 
 # "For each group, count the number of questions to which everyone answered "yes". What is the sum of those counts?"
-cnt = 0
-groups.each do |g|
-  everyone = g.answers.values.select { |v| v == g.num_members }
-  cnt += everyone.size
+i = groups.sum do |g|
+  g.answers.values.select { |v| v == g.num_members } .size
 end
 # part_2: 3445
-puts "part_2: #{cnt}"
+puts "part_2: #{i}"
