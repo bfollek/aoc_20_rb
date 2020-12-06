@@ -1,8 +1,8 @@
 # aoc_20_rb
 
-Advent of Code 2020 in ruby, with some [sorbet](https://sorbet.org/)
+Advent of Code 2020 in ruby, with an occasional serving of [sorbet](https://sorbet.org/)
 
-## Day 1 - done
+## Day 1 - done, with sorbet.
 
 For part 2, my first solution was a brute force triple loop. It ran fast enough. Then I tried a simple optimization based on the data: If the sum of the two outer loops is already over the target sum, skip the third loop. That improved performance a couple of orders of magnitutude:
 
@@ -19,12 +19,14 @@ part_2_opt   0.002445   0.000064   0.002509 (  0.002539)
 day_01 (main)$
 ```
 
-## Day 2 - done
+## Day 2 - done, with sorbet.
 
 Hooking up sorbet meant some code changes that feel a bit un-rubyish, especially in the [PasswordEntry](https://github.com/bfollek/aoc_20_rb/blob/main/day_02/password_entry.rb) `initialize` method.
 
-## Day 3 - done. No sorbet.
+## Day 3 - done.
 
-## Day 4 - done. No sorbet.
+## Day 4 - done.
 
-## Day 5 - done. No sorbet.
+## Day 5 - done.
+
+## Day 6 - done.
