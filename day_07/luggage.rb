@@ -20,7 +20,6 @@ class Luggage
 
   def self.load_from_file(file_name)
     l = self.new
-    cnt = 0
     File.foreach(file_name) do |line|
       line = line.chomp
       matches = line.match(RE)
@@ -29,7 +28,7 @@ class Luggage
         color = matches[:color]
         l.graph.add_vertex(color) unless l.graph.has_vertex?(color)
         contents = matches[:contents]
-        puts "#{color}, #{contents}, #{l.graph.num_vertices}, #{cnt}"
+        puts "#{color}, #{contents}, #{l.graph.num_vertices}"
       else
         raise "Can't parse #{line}"
       end
