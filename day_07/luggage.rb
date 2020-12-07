@@ -24,11 +24,10 @@ class Luggage
       line = line.chomp
       matches = line.match(RE)
       if matches
-        cnt += 1
         color = matches[:color]
         l.graph.add_vertex(color) unless l.graph.has_vertex?(color)
         contents = matches[:contents]
-        puts "#{color}, #{contents}, #{l.graph.num_vertices}"
+        #puts "#{color}, #{contents}, #{l.graph.num_vertices}"
       else
         raise "Can't parse #{line}"
       end
