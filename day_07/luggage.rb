@@ -20,7 +20,7 @@ class Luggage < SimpleDelegator # So that we 'inherit' the graph methods
       matches = line.match(RE)
       if matches
         color = matches[:color]
-        l.add_vertex(color) unless l.has_vertex?(color)
+        l.add_vertex_if_missing(color)
         contents = matches[:contents]
         puts "#{color}, #{contents}, #{l.num_vertices}"
       else
@@ -29,5 +29,13 @@ class Luggage < SimpleDelegator # So that we 'inherit' the graph methods
     end
     l
   end
+
+  def add_vertex_if_missing(v)
+    add_vertex(v) unless has_vertex?(v)
+  end
+
+# -------------------------------------------------------------------
+private
+# -------------------------------------------------------------------
 
 end
