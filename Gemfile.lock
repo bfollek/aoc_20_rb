@@ -1,17 +1,23 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    lazy_priority_queue (0.1.1)
     minitest (5.14.2)
+    rgl (0.5.6)
+      lazy_priority_queue (~> 0.1.0)
+      stream (~> 0.5.2)
     sorbet (0.5.6111)
       sorbet-static (= 0.5.6111)
     sorbet-runtime (0.5.6111)
     sorbet-static (0.5.6111-universal-darwin-18)
+    stream (0.5.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   minitest
+  rgl
   sorbet
   sorbet-runtime
 
