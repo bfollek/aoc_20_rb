@@ -17,7 +17,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest
-  rgl
+  rgl (~> 0.5.6)
   sorbet
   sorbet-runtime
 

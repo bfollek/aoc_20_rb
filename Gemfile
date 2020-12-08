@@ -5,5 +5,5 @@ group :development do
   gem 'sorbet'
 end
 
-gem 'rgl' # graphs
+gem 'rgl', '~> 0.5.6' # graphs
 gem 'sorbet-runtime'

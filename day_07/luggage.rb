@@ -1,8 +1,9 @@
 require 'rgl/adjacency'
-require 'rgl/dot'
-require 'rgl/traversal'
+require 'rgl/path'
 
 class Luggage
+
+  attr_reader :g
 
   # "dotted bronze bags contain 2 muted tomato bags."
   # dark red bags contain 2 wavy beige bags, 1 clear bronze bag, 5 shiny coral bags, 3 shiny indigo bags."
@@ -16,9 +17,6 @@ class Luggage
 
   def initialize
     @g = RGL::DirectedAdjacencyGraph.new
-  end
-
-  def draw
   end
 
   def self.load_from_file(file_name)
@@ -36,7 +34,6 @@ class Luggage
   end
 
   def store_luggage(bag_color, contents)
-    puts "#{bag_color}, #{contents}, #{@g.num_vertices}"
     @g.add_vertex(bag_color)
     return if contents == NO_BAGS
     a = contents.split(", ")
@@ -53,8 +50,13 @@ class Luggage
     end
   end
 
-# -------------------------------------------------------------------
-  private
-# -------------------------------------------------------------------
+  def count_paths_to_bag(b)
+    cnt = 0
+    @g.each_vertex do |v|
+      next if v == b
+      cnt += 1 if @g.path?(v, b)
+    end
+    cnt
+  end
 
 end
