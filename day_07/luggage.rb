@@ -3,7 +3,7 @@ require 'rgl/path'
 
 class Luggage
 
-  attr_reader :g
+  attr_reader :g # For irb debugging
 
   # "dotted bronze bags contain 2 muted tomato bags."
   # dark red bags contain 2 wavy beige bags, 1 clear bronze bag, 5 shiny coral bags, 3 shiny indigo bags."
