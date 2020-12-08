@@ -17,6 +17,7 @@ class Luggage
 
   def initialize
     @g = RGL::DirectedAdjacencyGraph.new
+    @bag_counts = {}
   end
 
   def self.load_from_file(file_name)
@@ -44,6 +45,7 @@ class Luggage
         content_count = matches[:count].to_i
         @g.add_vertex(content_color)
         @g.add_edge(bag_color, content_color)
+        @bag_counts[[bag_color, content_color]] = content_count
       else
         raise "Can't parse bag contents #{s}"
       end
@@ -57,6 +59,10 @@ class Luggage
       cnt += 1 if @g.path?(v, b)
     end
     cnt
+  end
+
+  def count_bags_in_bag(b)
+    9
   end
 
 end
