@@ -1,9 +1,26 @@
 require 'rgl/adjacency'
 require 'rgl/path'
 
+# Monkeypatched from https://www.rubydoc.info/github/monora/rgl/RGL%2FGraph:bfs_search_tree_from
+class RGL::DirectedAdjacencyGraph
+
+  def dfs_search_tree_from(v)
+    dfs  = dfs_iterator(v)
+    tree = self.class.new
+
+    dfs.set_tree_edge_event_handler do |from, to|
+      tree.add_edge(from, to)
+    end
+
+    dfs.set_to_end # does the search
+    tree
+  end
+
+end
+
 class Luggage
 
-  attr_reader :g # For irb debugging
+  attr_reader :bag_counts, :g # For irb debugging
 
   # "dotted bronze bags contain 2 muted tomato bags."
   # dark red bags contain 2 wavy beige bags, 1 clear bronze bag, 5 shiny coral bags, 3 shiny indigo bags."
@@ -45,7 +62,7 @@ class Luggage
         content_count = matches[:count].to_i
         @g.add_vertex(content_color)
         @g.add_edge(bag_color, content_color)
-        @bag_counts[[bag_color, content_color]] = content_count
+        @bag_counts["(#{bag_color}-#{content_color})"] = content_count
       else
         raise "Can't parse bag contents #{s}"
       end
@@ -62,7 +79,7 @@ class Luggage
   end
 
   def count_bags_in_bag(b)
-    9
+    0
   end
 
 end
