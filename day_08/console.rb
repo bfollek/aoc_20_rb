@@ -33,13 +33,22 @@ class Console
     [true, acc]
   end
 
-  def swap_codes_and_run(code_1, code_2)
-    insts = @instructions.dup
-    # dup instructions
-    # swap and try
-    # run - check how it ended
-    # restore instruction
-    # loop
+  def swap_codes_and_run(instructions, code_1, code_2)
+    insts = instructions.dup
+    insts.each_with_index do |inst, i|
+      save_code = inst.code
+      if inst.code == code_1
+        inst.code = code_2
+      elsif inst.code == code_2
+        inst.code = code_1
+      end
+      rv, acc = run(insts)
+      if rv
+        return acc
+      else
+        insts[i].code = save_code
+      end
+    end
   end
 
   def load_code(program)

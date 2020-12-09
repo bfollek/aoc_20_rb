@@ -4,7 +4,7 @@ class Instruction
   JUMP = "jmp"
   NO_OP = "nop"
 
-  attr_reader :code, :arg
+  attr_accessor :code, :arg
 
   def initialize(s)
     @code, @arg = s.split(' ')
