@@ -13,7 +13,7 @@ class Console
     has_run = Array.new(@instructions.size, false)
     acc = 0
     pc = 0 # Program Counter
-    loop do
+    while pc < @instructions.size
       if has_run[pc]
         # Loop - kill it
         return [false, acc]
@@ -22,18 +22,21 @@ class Console
       end
       i = @instructions[pc]
       case i.code
-      when 'nop'
+      when Instruction::NO_OP
         pc += 1
-      when 'acc'
+      when Instruction::ACCUMULATE
         pc += 1
         acc += i.arg
-      when 'jmp'
+      when Instruction::JUMP
         pc += i.arg
       else
         raise "Unknown instruction: #{i}"
       end
     end
     [true, acc]
+  end
+
+  def swap_codes_and_run(code_1, code_2)
   end
 
 # -------------------------------------------------------------------

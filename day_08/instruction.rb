@@ -1,5 +1,9 @@
 class Instruction
 
+  ACCUMULATE = "acc"
+  JUMP = "jmp"
+  NO_OP = "nop"
+
   attr_reader :code, :arg
 
   def initialize(s)

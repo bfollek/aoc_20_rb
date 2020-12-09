@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require_relative 'instruction'
 require_relative 'console'
 
 c = Console.new '../data/day_08.dat'
