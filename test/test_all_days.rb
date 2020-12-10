@@ -35,8 +35,8 @@ class AllDays < Minitest::Test
 
   def test_day_04
     day = Day04.new 'day_04/data/day_04.dat'
-    assert_equal 207, day.part_1
-    assert_equal 2655892800, day.part_2
+    assert_equal 196, day.part_1
+    assert_equal 114, day.part_2
   end
 
 end
