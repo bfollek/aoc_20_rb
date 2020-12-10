@@ -12,6 +12,7 @@ require_relative '../day_07/luggage'
 require_relative '../day_08/console'
 require_relative '../day_08/instruction'
 require_relative '../day_09/xmas'
+require_relative '../day_10/adapters'
 
 class AllDays < Minitest::Test
 
@@ -75,6 +76,8 @@ class AllDays < Minitest::Test
   end
 
   def test_day_10
+    adapters = Adapters.new 'day_10/data/day_10.dat'
+    assert_equal 1848, adapters.joltage_check
   end
 
 end
