@@ -30,4 +30,49 @@ class Xmas
     end
   end
 
+  # "...you must find a contiguous set of at least two numbers in your list which sum to the invalid number
+  # from step 1."
+  # "To find the encryption weakness, add together the smallest and largest number in this contiguous range..."
+  def encryption_weakness
+    target = invalid_num
+    puts "target: #{target}"
+    total = 0
+    start = 0
+    i = start
+    finish = nil
+    loop do
+      puts "i: #{i}, start: #{start}, total: #{total}"
+      nxt = @nums[i]
+      # If the next number is the target, we're not using 2 numbers. Abandon the sequence.
+      if nxt == target
+        puts 'next 1'
+        total = 0
+        start += 1
+        i = start
+        next
+      end
+      total += nxt
+      # If we go over the target, abandon the sequence.
+      if total > target
+        puts 'next 2'
+        total = 0
+        start += 1
+        i = start
+        next
+      end
+      # If the total is the target, we found the sequence.
+      if total == target
+        puts 'found it'
+        finish = i
+        break
+      end
+      # If we get here, total < target, so loop and extend the sequence.
+      puts 'looping'
+      i += 1
+    end
+    seq = @nums[start..finish]
+    puts "start: #{start}, finish: #{finish}, seq: #{seq}"
+    seq.min + seq.max
+  end
+
 end
