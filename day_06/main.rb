@@ -3,7 +3,7 @@
 
 require_relative 'group'
 
-groups = Group.load_from_file '../data/day_06.dat'
+groups = Group.load_from_file 'data/day_06.dat'
 
 # "For each group, count the number of questions to which anyone answered "yes". What is the sum of those counts?"
 i = groups.sum { |g| g.answers.size }

@@ -4,7 +4,7 @@ require_relative 'instruction'
 require_relative 'console'
 
 c = Console.new
-instructions = c.load_code '../data/day_08.dat'
+instructions = c.load_code 'data/day_08.dat'
 
 _, acc = c.run instructions
 # part_1: 1446
