@@ -36,3 +36,5 @@ Hooking up sorbet meant some code changes that feel a bit un-rubyish, especially
 ## Day 8 - done.
 
 ## Day 9 - done.
+
+## Day 10 - Part 1 done. Part 2 on hold.
