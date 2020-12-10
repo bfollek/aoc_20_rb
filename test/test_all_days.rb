@@ -58,4 +58,23 @@ class AllDays < Minitest::Test
     # assert_equal ???, luggage.count_bags_in_bag(my_bag)
   end
 
+  def test_day_08
+    c = Console.new
+    instructions = c.load_code 'day_08/data/day_08.dat'
+
+    _, acc = c.run instructions
+    assert_equal 1446, acc
+
+    assert_equal 1403, c.swap_codes_and_run(instructions, Instruction::JUMP, Instruction::NO_OP)
+  end
+
+  def test_day_09
+    xmas = Xmas.new 'day_09/data/day_09.dat', 25
+    assert_equal 1492208709, xmas.invalid_num
+    assert_equal 238243506, xmas.encryption_weakness
+  end
+
+  def test_day_10
+  end
+
 end
