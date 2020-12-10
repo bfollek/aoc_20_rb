@@ -39,4 +39,10 @@ class AllDays < Minitest::Test
     assert_equal 114, day.part_2
   end
 
+  def test_day_05
+    boarding_passes = BoardingPass.load_from_file 'day_05/data/day_05.dat'
+    assert_equal 826, boarding_passes.max_by(&:seat_id).seat_id
+    assert_equal 678, BoardingPass.find_gap(boarding_passes)
+  end
+
 end
