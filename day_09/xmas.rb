@@ -35,39 +35,29 @@ class Xmas
   # "To find the encryption weakness, add together the smallest and largest number in this contiguous range..."
   def encryption_weakness
     target = invalid_num
-    total, start, i = start_sequence(0)
+    # Starting from 1 covers the edge case where the target is the first num.
+    # total will be > target as soon as we add the second num.
+    start, i = 1, 1
+    total = @nums[0]
     finish = nil
     loop do
-      nxt = @nums[i]
-      # If the next number is the target, we're not using 2 numbers. Abandon the sequence.
-      if nxt == target
-        total, start, i = start_sequence(start)
+      total += @nums[i]
+      case
+      # If we went over the target, restart the sequence from the next number.
+      when total > target
+        start, i, total = start + 1, start + 1, 0
         next
-      end
-      total += nxt
-      # If we go over the target, abandon the sequence.
-      if total > target
-        total, start, i = start_sequence(start)
-        next
-      end
       # If the total is the target, we found the sequence.
-      if total == target
+      when total == target
         finish = i
         break
-      end
+      else
       # If we get here, total < target, so loop and extend the sequence.
-      i += 1
+        i += 1
+      end
     end
     seq = @nums[start..finish]
     seq.min + seq.max
-  end
-
-# -------------------------------------------------------------------
-  private
-# -------------------------------------------------------------------
-
-  def start_sequence(start)
-    return 0, start + 1, start + 1
   end
 
 end
