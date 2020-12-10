@@ -25,4 +25,18 @@ class Group
     groups << g
   end
 
+  # "For each group, count the number of questions to which anyone answered "yes".
+  # What is the sum of those counts?"
+  def self.anyone_answered_yes(groups)
+    groups.sum { |g| g.answers.size }
+  end
+
+  # "For each group, count the number of questions to which everyone answered "yes".
+  # What is the sum of those counts?"
+  def self.everyone_answered_yes(groups)
+    groups.sum do |g|
+      g.answers.values.select { |v| v == g.num_members } .size
+    end
+  end
+
 end

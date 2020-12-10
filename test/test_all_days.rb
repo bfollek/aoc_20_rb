@@ -45,4 +45,10 @@ class AllDays < Minitest::Test
     assert_equal 678, BoardingPass.find_gap(boarding_passes)
   end
 
+  def test_day_06
+    groups = Group.load_from_file 'data/day_06.dat'
+    assert_equal 6748, Group.anyone_answered_yes(groups)
+    assert_equal 3445, Group.everyone_answered_yes(groups)
+  end
+
 end
