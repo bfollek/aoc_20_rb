@@ -2,6 +2,12 @@
 
 Advent of Code 2020 in ruby, with an occasional serving of [sorbet](https://sorbet.org/)
 
+## Running Tests
+
+```bash
+aoc_20_rb (main)$ ./test/test_all_days.rb
+```
+
 ## Day 1 - done, with sorbet.
 
 For part 2, my first solution was a brute force triple loop. It ran fast enough. Then I tried a simple optimization based on the data: If the sum of the two outer loops is already over the target sum, skip the third loop. That improved performance a couple of orders of magnitutude:
