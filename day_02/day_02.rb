@@ -13,14 +13,12 @@ class Day02
   end
 
   # How many passwords are valid according to their policies?
-  # part_1: 414
   sig {returns(Integer)}
   def part_1
     looper { |pe| pe.part_1_valid? }
   end
 
   sig {returns(Integer)}
-  # part_2: 413
   def part_2
     looper { |pe| pe.part_2_valid? }
   end

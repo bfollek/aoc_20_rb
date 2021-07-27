@@ -9,14 +9,12 @@ class Day03
   end
 
   # "Starting at the top-left corner of your map and following a slope of right 3 and down 1, how many trees would you encounter?"
-  # part_1: 207
   def part_1
     load_grid
     slide(3, 1)
   end
 
   # "What do you get if you multiply together the number of trees encountered on each of the listed slopes?"
-  # part_2: 2655892800
   def part_2
     load_grid
     rv = 1

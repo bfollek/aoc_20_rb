@@ -14,7 +14,6 @@ class Day01
   end
 
   # "...find the two entries that sum to 2020 and then multiply those two numbers together."
-  # part_1: 744475
   sig { returns(Integer) }
   def part_1
     entries = load_entries
@@ -33,7 +32,6 @@ class Day01
   end
 
   # Find the _3_ entries that sum to 2020.
-  # part_2: 70276940
   sig { returns(Integer) }
   def part_2
     entries = load_entries
