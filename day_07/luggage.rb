@@ -1,6 +1,5 @@
 require 'rgl/adjacency'
 require 'rgl/path'
-require 'rgl/traversal'
 
 class Luggage
 
@@ -91,43 +90,13 @@ class Luggage
 
   # "wavy gold bags contain 2 muted tomato bags, 5 posh tomato bags."
 
+  # Build a queue of vertices and an array of edges, then loop through edge weights and sum them!
   def count_bags_in_bag(b)
+    # Prime q with b
     g.each_adjacent(b).each do |av|
       puts av
     end
     0
-    #start = g.detect { |x| x == b }
-    #a = g.bfs_search_tree_from(start).to_a
-    #g.dijkstra_shortest_path(edge_weights, "New York", "Houston")
-# ["New York", "Los Angeles", "Houston"]
-    # puts a
-    # cnt = 0
-    # a.each_with_index do |bag, i|
-    #   if i == a.size - 1
-    #     break
-    #   end
-    #   nxt_bag = a[i + 1]
-    #   puts "#{bag} #{nxt_bag} #{@edge_weights[[bag, nxt_bag]]}"
-    #   cnt += @edge_weights[[bag, nxt_bag]]
-    # end
-    # cnt
   end
-
-
-  #   a = g.bfs_iterator.to_a
-  #   found = false
-  #   prev = b
-  #   cnt = 0
-  #   a.each do |nxt|
-  #     if found
-  #       puts "#{prev} #{nxt} #{@edge_weights[[prev, nxt]]}"
-  #       cnt += @edge_weights[[prev, nxt]]
-  #     else
-  #       found = true if nxt == b
-  #     end
-  #     prev = nxt
-  #   end
-  #   cnt
-  # end
 
 end
