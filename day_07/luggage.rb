@@ -1,9 +1,10 @@
 require 'rgl/adjacency'
 require 'rgl/path'
+require 'rgl/traversal'
 
 class Luggage
 
-  attr_reader :bag_counts, :g # For irb debugging
+  attr_reader :edge_weights, :g # For irb debugging
 
   # "dotted bronze bags contain 2 muted tomato bags."
   # dark red bags contain 2 wavy beige bags, 1 clear bronze bag, 5 shiny coral bags, 3 shiny indigo bags."
@@ -17,7 +18,7 @@ class Luggage
 
   def initialize
     @g = RGL::DirectedAdjacencyGraph.new
-    @bag_counts = {}
+    @edge_weights = {}
   end
 
   def self.load_from_file(file_name)
@@ -45,7 +46,7 @@ class Luggage
         content_count = matches[:count].to_i
         @g.add_vertex(content_color)
         @g.add_edge(bag_color, content_color)
-        @bag_counts["(#{bag_color}-#{content_color})"] = content_count
+        @edge_weights[[bag_color, content_color]] = content_count
       else
         raise "Can't parse bag contents #{s}"
       end
@@ -61,8 +62,72 @@ class Luggage
     cnt
   end
 
+# shiny gold
+# wavy gold
+# muted tomato
+# posh tomato
+# dull magenta
+# muted fuchsia
+# wavy beige
+# dim gray
+# shiny lime
+# bright black
+# clear bronze
+# bright yellow
+# dim turquoise
+# pale fuchsia
+# wavy gray
+# vibrant salmon
+# dotted beige
+# clear purple
+# faded salmon
+# drab black
+# shiny plum
+# dark silver
+# wavy brown
+# shiny purple
+# striped teal
+# shiny indigo
+
+  # "wavy gold bags contain 2 muted tomato bags, 5 posh tomato bags."
+
   def count_bags_in_bag(b)
+    g.each_adjacent(b).each do |av|
+      puts av
+    end
     0
+    #start = g.detect { |x| x == b }
+    #a = g.bfs_search_tree_from(start).to_a
+    #g.dijkstra_shortest_path(edge_weights, "New York", "Houston")
+# ["New York", "Los Angeles", "Houston"]
+    # puts a
+    # cnt = 0
+    # a.each_with_index do |bag, i|
+    #   if i == a.size - 1
+    #     break
+    #   end
+    #   nxt_bag = a[i + 1]
+    #   puts "#{bag} #{nxt_bag} #{@edge_weights[[bag, nxt_bag]]}"
+    #   cnt += @edge_weights[[bag, nxt_bag]]
+    # end
+    # cnt
   end
+
+
+  #   a = g.bfs_iterator.to_a
+  #   found = false
+  #   prev = b
+  #   cnt = 0
+  #   a.each do |nxt|
+  #     if found
+  #       puts "#{prev} #{nxt} #{@edge_weights[[prev, nxt]]}"
+  #       cnt += @edge_weights[[prev, nxt]]
+  #     else
+  #       found = true if nxt == b
+  #     end
+  #     prev = nxt
+  #   end
+  #   cnt
+  # end
 
 end

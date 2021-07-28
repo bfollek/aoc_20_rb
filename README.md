@@ -5,7 +5,7 @@ Advent of Code 2020 in ruby, with an occasional serving of [sorbet](https://sorb
 ## Running Tests
 
 ```bash
-aoc_20_rb (main)$ ./test/test_all_days.rb
+aoc_20_rb (main)$ bundle exec ruby test/test_all_days.rb
 ```
 
 ## Day 1 - done, with sorbet.
