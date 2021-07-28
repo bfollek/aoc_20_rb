@@ -45,6 +45,7 @@ class Luggage
         content_count = matches[:count].to_i
         @g.add_vertex(content_color)
         @g.add_edge(bag_color, content_color)
+        puts "#{bag_color}, #{content_color}, #{content_count}"
         @edge_weights[[bag_color, content_color]] = content_count
       else
         raise "Can't parse bag contents #{s}"
@@ -90,13 +91,31 @@ class Luggage
 
   # "wavy gold bags contain 2 muted tomato bags, 5 posh tomato bags."
 
-  # Build a queue of vertices and an array of edges, then loop through edge weights and sum them!
+  # Build a queue of vertices and an array of edges, then loop through edge weights and sum them.
+
+  # TODO - I need to know how many bags each bag has...
   def count_bags_in_bag(b)
-    # Prime q with b
-    g.each_adjacent(b).each do |av|
-      puts av
+    edges = []
+    q = [b]
+    
+    while ! q.empty?
+      v = q.pop
+      g.each_adjacent(v).each do |av|
+        q.prepend av
+        edge = [v, av]
+        #puts "edge: #{edge}, q.size: #{q.size}"
+        edges << edge
+      end
     end
-    0
+    #1 + 1*7 + 2 + 2*11 = 32 bags!
+    total = 0
+    last_weight = 1
+    edges.each do |e|
+      edge_weight = edge_weights[e]
+      total += (last_weight * edge_weight)
+      last_weight = last_weight * edge_weight
+    end
+    total
   end
 
 end
