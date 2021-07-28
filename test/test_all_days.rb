@@ -56,7 +56,7 @@ class AllDays < Minitest::Test
     my_bag = "shiny gold"
     luggage = Luggage.load_from_file 'day_07/data/day_07.dat'
     assert_equal 235, luggage.count_paths_to_bag(my_bag)
-    # assert_equal ???, luggage.count_bags_in_bag(my_bag)
+    assert_equal 158493, luggage.count_bags_in_bag(my_bag)
   end
 
   def test_day_08

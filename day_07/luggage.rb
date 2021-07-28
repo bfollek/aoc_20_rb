@@ -62,89 +62,14 @@ class Luggage
     cnt
   end
 
-  def contains(b)
+  def count_bags_in_bag(b)
     total = 0
     @g.each_adjacent(b) do |adj|
       bag_cnt = @edge_weights[[b, adj]]
-      total += (bag_cnt * contains(adj))
-      puts "b: #{b}, adj: #{adj}, bag_cnt: #{bag_cnt}, total: #{total}"
+      total = total + bag_cnt + (bag_cnt * count_bags_in_bag(adj))
+      #puts "b: #{b}, adj: #{adj}, bag_cnt: #{bag_cnt}, total: #{total}"
     end
     total
   end
-
-# shiny gold
-# wavy gold
-# muted tomato
-# posh tomato
-# dull magenta
-# muted fuchsia
-# wavy beige
-# dim gray
-# shiny lime
-# bright black
-# clear bronze
-# bright yellow
-# dim turquoise
-# pale fuchsia
-# wavy gray
-# vibrant salmon
-# dotted beige
-# clear purple
-# faded salmon
-# drab black
-# shiny plum
-# dark silver
-# wavy brown
-# shiny purple
-# striped teal
-# shiny indigo
-
-  # "wavy gold bags contain 2 muted tomato bags, 5 posh tomato bags."
-
-  # Build a queue of vertices and an array of edges, then loop through edge weights and sum them.
-
-  # TODO - I need to know how many bags each bag has...
-  # Then I'll just need the bfs?
-  def count_bags_in_bag(b)
-    contains(b)
-  end
-
-
-#     edges = []
-#     q = [b]
-    
-#     while ! q.empty?
-#       v = q.pop
-#       g.each_adjacent(v).each do |av|
-#         q.prepend av
-#         edge = [v, av]
-#         #puts "edge: #{edge}, q.size: #{q.size}"
-#         edges << edge
-#       end
-#     end
-#     #1 + 1*7 + 2 + 2*11 = 32 bags!
-#     total = 0
-#     last_weight = 1
-
-# #     shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.
-# #     dark olive bags contain 7 other bags: 3 faded blue bags and 4 dotted black bags.
-# #     vibrant plum bags contain 11 other bags: 5 faded blue bags and 6 dotted black bags.
-# #     faded blue bags contain 0 other bags.
-# #     dotted black bags contain 0 other bags.
-
-# # So, a single shiny gold bag must contain 1 dark olive bag (and the 7 bags within it) plus 2 vibrant 
-# # plum bags (and the 11 bags within each of those): 1 + 1*7 + 2 + 2*11 = 32 bags!
-
-# # How do I know to multiply vibrant plum by 2?
-
-#     edges.each do |e|
-#       edge_weight = edge_weights[e]
-#       total += edge_weight
-#       puts "edge: #{e}, edge_weight: #{edge_weight}, total: #{total}"
-#       #total += (last_weight * edge_weight)
-#       #last_weight = last_weight * edge_weight
-#     end
-#     total
-#   end
 
 end
