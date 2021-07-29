@@ -2,7 +2,7 @@
 
 require 'minitest/autorun'
 
-require_relative '../day_01/day_01'
+require_relative '../day_01/accounting'
 require_relative '../day_02/day_02'
 require_relative '../day_03/day_03'
 require_relative '../day_04/day_04'
@@ -17,9 +17,10 @@ require_relative '../day_10/adapters'
 class AllDays < Minitest::Test
 
   def test_day_01
-    day = Day01.new 'day_01/data/day_01.dat'
-    assert_equal 744475, day.part_1
-    assert_equal 70276940, day.part_2_opt
+    day = Accounting.new 'day_01/data/day_01.dat'
+    assert_equal 744475, day.find_two_entries
+    assert_equal 70276940, day.find_three_entries
+    assert_equal 70276940, day.find_three_entries_optimized
   end
 
   def test_day_02

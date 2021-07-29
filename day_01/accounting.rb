@@ -2,7 +2,7 @@
 
 require 'sorbet-runtime'
 
-class Day01
+class Accounting
   extend T::Sig
 
   GOAL = 2020
@@ -15,7 +15,7 @@ class Day01
 
   # "...find the two entries that sum to 2020 and then multiply those two numbers together."
   sig { returns(Integer) }
-  def part_1
+  def find_two_entries
     entries = load_entries
     entries.each_with_index do |entry_i, i|
       entries.each_with_index do |entry_j, j|
@@ -33,7 +33,7 @@ class Day01
 
   # Find the _3_ entries that sum to 2020.
   sig { returns(Integer) }
-  def part_2
+  def find_three_entries
     entries = load_entries
     entries.each_with_index do |entry_i, i|
       entries.each_with_index do |entry_j, j|
@@ -52,7 +52,7 @@ class Day01
   end
 
   sig { returns(Integer) }
-  def part_2_opt
+  def find_three_entries_optimized
     entries = load_entries
     entries.each_with_index do |entry_i, i|
       entries.each_with_index do |entry_j, j|
