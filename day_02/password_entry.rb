@@ -21,7 +21,7 @@ class PasswordEntry
   end
 
   sig {returns(T::Boolean)}
-  def part_1_valid?
+  def valid?
     cnt = 0
     @password.each_char do |c|
       cnt += 1 if c == @required_char
@@ -31,7 +31,7 @@ class PasswordEntry
   end
 
   sig {returns(T::Boolean)}
-  def part_2_valid?
+  def valid_new_way?
     match_1 = @password[@min_count - 1] == @required_char
     match_2 = @password[@max_count - 1] == @required_char
     case

@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 # typed: true
 
-require_relative 'day_02'
+require_relative 'passwords'
 
-day_02 = Day02.new 'data/day_02.dat'
-puts "part_1: #{day_02.part_1}"
-puts "part_2: #{day_02.part_2}"
+passwords = Passwords.new 'data/day_02.dat'
+puts "part_1: #{passwords.count_valid_old_way}"
+puts "part_2: #{passwords.count_valid_new_way}"

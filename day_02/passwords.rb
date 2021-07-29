@@ -4,7 +4,7 @@ require 'sorbet-runtime'
 
 require_relative 'password_entry'
 
-class Day02
+class Passwords
   extend T::Sig
 
   sig {params(file_name: String).void}
@@ -14,13 +14,13 @@ class Day02
 
   # How many passwords are valid according to their policies?
   sig {returns(Integer)}
-  def part_1
-    looper { |pe| pe.part_1_valid? }
+  def count_valid_old_way
+    looper { |pe| pe.valid? }
   end
 
   sig {returns(Integer)}
-  def part_2
-    looper { |pe| pe.part_2_valid? }
+  def count_valid_new_way
+    looper { |pe| pe.valid_new_way? }
   end
 
 # -------------------------------------------------------------------

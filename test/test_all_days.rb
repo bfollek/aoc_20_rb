@@ -3,7 +3,7 @@
 require 'minitest/autorun'
 
 require_relative '../day_01/accounting'
-require_relative '../day_02/day_02'
+require_relative '../day_02/passwords'
 require_relative '../day_03/day_03'
 require_relative '../day_04/day_04'
 require_relative '../day_05/boarding_pass'
@@ -24,9 +24,9 @@ class AllDays < Minitest::Test
   end
 
   def test_day_02
-    day = Day02.new 'day_02/data/day_02.dat'
-    assert_equal 414, day.part_1
-    assert_equal 413, day.part_2
+    passwords = Passwords.new 'day_02/data/day_02.dat'
+    assert_equal 414, passwords.count_valid_old_way
+    assert_equal 413, passwords.count_valid_new_way
   end
 
   def test_day_03
