@@ -15,7 +15,6 @@ class Luggage
 
   def initialize
     @g = RGL::DirectedAdjacencyGraph.new
-    @contained_by = Hash.new(0) # 0 is default when key not found
     @edge_weights = {}
   end
 
@@ -45,7 +44,6 @@ class Luggage
         @g.add_vertex(content_color)
         @g.add_edge(bag_color, content_color)
         #puts "#{bag_color}, #{content_color}, #{content_count}"
-        @contained_by[bag_color] += content_count
         @edge_weights[[bag_color, content_color]] = content_count
       else
         raise "Can't parse bag contents #{s}"
