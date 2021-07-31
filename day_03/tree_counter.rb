@@ -1,6 +1,6 @@
 Point = Struct.new(:x, :y)
 
-class Day03
+class TreeCounter
 
   TREE = '#'
 
@@ -9,13 +9,13 @@ class Day03
   end
 
   # "Starting at the top-left corner of your map and following a slope of right 3 and down 1, how many trees would you encounter?"
-  def part_1
+  def count_trees_one_slope
     load_grid
     slide(3, 1)
   end
 
   # "What do you get if you multiply together the number of trees encountered on each of the listed slopes?"
-  def part_2
+  def count_and_multiply_trees_all_slopes
     load_grid
     rv = 1
     slopes = [[1,1], [3,1], [5,1], [7,1], [1,2]]

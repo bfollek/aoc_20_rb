@@ -4,7 +4,7 @@ require 'minitest/autorun'
 
 require_relative '../day_01/accounting'
 require_relative '../day_02/passwords'
-require_relative '../day_03/day_03'
+require_relative '../day_03/tree_counter'
 require_relative '../day_04/day_04'
 require_relative '../day_05/boarding_pass'
 require_relative '../day_06/group'
@@ -30,9 +30,9 @@ class AllDays < Minitest::Test
   end
 
   def test_day_03
-    day = Day03.new 'day_03/data/day_03.dat'
-    assert_equal 207, day.part_1
-    assert_equal 2655892800, day.part_2
+    tree_counter = TreeCounter.new 'day_03/data/day_03.dat'
+    assert_equal 207, tree_counter.count_trees_one_slope
+    assert_equal 2655892800, tree_counter.count_and_multiply_trees_all_slopes
   end
 
   def test_day_04
