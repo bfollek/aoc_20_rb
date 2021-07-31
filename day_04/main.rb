@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # typed: true
 
-require_relative 'day_04'
+require_relative 'passport'
 
 passports = Passport.load_from_file 'data/day_04.dat'
 valid = passports.select { |pp| pp.has_required_fields? }
