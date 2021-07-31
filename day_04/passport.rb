@@ -44,7 +44,7 @@ class Passport
     @cid = nil
   end
 
-  def valid_part_1?
+  def has_required_fields?
     return false if byr.nil?
     return false if iyr.nil?
     return false if eyr.nil?
@@ -56,7 +56,7 @@ class Passport
     true
   end
 
-  def valid_part_2?
+  def valid?
     return false unless valid_byr?
     return false unless valid_iyr?
     return false unless valid_eyr?

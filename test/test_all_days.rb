@@ -36,9 +36,11 @@ class AllDays < Minitest::Test
   end
 
   def test_day_04
-    day = Day04.new 'day_04/data/day_04.dat'
-    assert_equal 196, day.part_1
-    assert_equal 114, day.part_2
+    passports = Passport.load_from_file 'day_04/data/day_04.dat'
+    valid = passports.select { |pp| pp.has_required_fields? }
+    assert_equal 196, valid.size
+    valid = passports.select { |pp| pp.valid? }
+    assert_equal 114, valid.size
   end
 
   def test_day_05

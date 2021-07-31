@@ -3,6 +3,8 @@
 
 require_relative 'day_04'
 
-day_04 = Day04.new 'data/day_04.dat'
-puts "part_1: #{day_04.part_1}"
-puts "part_2: #{day_04.part_2}"
+passports = Passport.load_from_file 'data/day_04.dat'
+valid = passports.select { |pp| pp.has_required_fields? }
+puts "part_1: #{valid.size}"
+valid = passports.select { |pp| pp.valid? }
+puts "part_2: #{valid.size}"
