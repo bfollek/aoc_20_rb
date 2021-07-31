@@ -17,13 +17,6 @@ require_relative '../day_10/adapters'
 
 class AllDays < Minitest::Test
 
-  def test_day_01
-    day = Accounting.new 'day_01/data/day_01.dat'
-    assert_equal 744475, day.find_two_entries
-    assert_equal 70276940, day.find_three_entries
-    assert_equal 70276940, day.find_three_entries_optimized
-  end
-
   def test_day_02
     passwords = Passwords.new 'day_02/data/day_02.dat'
     assert_equal 414, passwords.count_valid_old_way
