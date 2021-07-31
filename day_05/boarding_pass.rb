@@ -1,3 +1,4 @@
+# typed: true
 class BoardingPass
 
   def initialize(scan)

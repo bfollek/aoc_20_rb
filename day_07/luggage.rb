@@ -1,3 +1,4 @@
+# typed: true
 require 'rgl/adjacency'
 require 'rgl/path'
 

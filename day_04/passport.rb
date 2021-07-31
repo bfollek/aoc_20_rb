@@ -1,3 +1,4 @@
+# typed: false
 class Passport
 
   # hgt (Height) - a number followed by either cm or in:

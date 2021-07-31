@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# typed: true
+# typed: strict
 
 require_relative 'tree_counter'
 

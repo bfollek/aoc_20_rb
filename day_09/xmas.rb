@@ -1,3 +1,4 @@
+# typed: false
 class Xmas
 
   def initialize(file_name, preamble_size)

@@ -1,3 +1,4 @@
+# typed: false
 class Adapters
 
   def initialize file_name

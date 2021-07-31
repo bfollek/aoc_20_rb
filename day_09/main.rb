@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# typed: strict
 
 require_relative 'xmas'
 

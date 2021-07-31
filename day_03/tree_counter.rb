@@ -1,3 +1,4 @@
+# typed: false
 Point = Struct.new(:x, :y)
 
 class TreeCounter

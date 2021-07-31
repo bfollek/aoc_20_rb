@@ -1,3 +1,4 @@
+# typed: true
 class Group
 
   attr_accessor :answers, :num_members
