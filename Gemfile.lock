@@ -9,7 +9,14 @@ GEM
     sorbet (0.5.6111)
       sorbet-static (= 0.5.6111)
     sorbet-runtime (0.5.6111)
+    sorbet-static (0.5.6111-universal-darwin-14)
+    sorbet-static (0.5.6111-universal-darwin-15)
+    sorbet-static (0.5.6111-universal-darwin-16)
+    sorbet-static (0.5.6111-universal-darwin-17)
     sorbet-static (0.5.6111-universal-darwin-18)
+    sorbet-static (0.5.6111-universal-darwin-19)
+    sorbet-static (0.5.6111-universal-darwin-20)
+    sorbet-static (0.5.6111-x86_64-linux)
     stream (0.5.2)
 
 PLATFORMS
@@ -22,7 +29,7 @@ DEPENDENCIES
   sorbet-runtime
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 3.0.1p64
 
 BUNDLED WITH
-   2.1.4
+   2.2.25

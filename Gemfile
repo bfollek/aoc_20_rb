@@ -8,4 +8,4 @@ end
 gem 'rgl', '~> 0.5.6' # graphs
 gem 'sorbet-runtime'
 
-ruby '2.7.2'
+ruby '3.0.1'
