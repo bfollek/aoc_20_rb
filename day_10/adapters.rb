@@ -39,12 +39,32 @@ class Adapters
   # "What is the total number of distinct ways you can arrange the adapters to connect
   # the charging outlet to your device?"
   def distinct_arrangements
+    g = build_graph
+    
     0
   end
 
 # -------------------------------------------------------------------
   private
 # -------------------------------------------------------------------
+
+  def build_graph
+    g = RGL::DirectedAdjacencyGraph.new
+    # @adapters.each do |a|
+    #   @g.add_vertex(a)
+    # end
+    @adapters.each_with_index do |a, i|
+      if i == @adapters.size - 1
+        break
+      end
+      nxt = @adapters[i+1]
+      # If this adapter can reach the next one, add an edge.
+      if nxt - MAX_DIFF <= a
+        @g.add_edge(a, nxt)
+      end
+    end
+    g
+  end
 
   %{
 
