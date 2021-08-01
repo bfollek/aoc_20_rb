@@ -7,13 +7,13 @@ Advent of Code 2020 in ruby, with an occasional serving of [sorbet](https://sorb
 Run one day:
 
 ```bash
-aoc_20_rb (main)$ bundle exec ruby day_01/test*
+bundle exec ruby tests/test_day_07.rb
 ```
 
 Run all tests:
 
 ```bash
-TODO aoc_20_rb (main)$ bundle exec ruby test/test_all_days.rb
+rake
 ```
 
 ## Day 1 - done, with sorbet.
