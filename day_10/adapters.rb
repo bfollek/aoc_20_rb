@@ -43,10 +43,21 @@ class Adapters
   # the charging outlet to your device?"
   def distinct_arrangements
     g = build_graph
-    # Remember that g.to_s sorts alpha, which can be misleading.
-    # https://www.rubydoc.info/github/monora/rgl/RGL/Graph#to_s-instance_method
-    puts "g: #{g}" 
-    0
+    cnt = 0
+    q = [@adapters[0]]
+    goal = @adapters.last
+    # TODO The same node may show up multiple times. memoize?
+    while !q.empty?
+      v = q.pop
+      g.each_adjacent(v) do |adj|
+        if adj == goal
+          cnt += 1
+        else
+          q << adj
+        end
+      end
+    end
+    return cnt
   end
 
 # -------------------------------------------------------------------
@@ -56,46 +67,20 @@ class Adapters
   def build_graph
     g = RGL::DirectedAdjacencyGraph.new
     @adapters.each_with_index do |a, i|
-      # We're goint to reach ahead 1 slot, so...
-      if i + 1 == @adapters.size
-        break
-      end
-      a_nxt = @adapters[i+1]
-      # If this adapter can reach the next one, add an edge.
-      if a + MAX_DIFF >= a_nxt
-        g.add_edge(a, a_nxt)
+      (i+1..@adapters.size - 1).each do |j| 
+        a_nxt = @adapters[j]
+        # If this adapter can reach the next one, add an edge.
+        if a + MAX_DIFF >= a_nxt
+          g.add_edge(a, a_nxt)
+        else
+          break # inner loop - out of range == done
+        end
       end
     end
+    # Remember that g.to_s sorts alpha, which can be misleading.
+    # https://www.rubydoc.info/github/monora/rgl/RGL/Graph#to_s-instance_method
+    #puts "g: #{g}" 
     g
   end
-
-  %{
-
-    I should be able to build the graph such that only nodes within range have edges.
-    nodes.each_with_index do |i, n|
-      nodes(i+1..).each do |other|
-        if other - MAX_JOLT <= n
-          add_edge(n, other)
-        else
-          break
-        end
-    end
-
-  # cnt = 0
-  # q = [start]
-  # while !q.empty?
-  #   v = q.pop
-  #   v.each_adjacent do |adj|
-  #     if adj == end
-  #       cnt += 1
-  #     else
-  #       q << adj
-  #     end
-  #   end
-  # end
-  # return cnt
-
-  The same node may show up multiple times. memoize its trip?
-  }
 
 end
