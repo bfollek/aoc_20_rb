@@ -43,7 +43,9 @@ class Adapters
   # the charging outlet to your device?"
   def distinct_arrangements
     g = build_graph
-    puts "g: #{g}"
+    # Remember that g.to_s sorts alpha, which can be misleading.
+    # https://www.rubydoc.info/github/monora/rgl/RGL/Graph#to_s-instance_method
+    puts "g: #{g}" 
     0
   end
 
@@ -52,7 +54,6 @@ class Adapters
 # -------------------------------------------------------------------
 
   def build_graph
-    puts "@adapters: #{@adapters}"
     g = RGL::DirectedAdjacencyGraph.new
     @adapters.each_with_index do |a, i|
       # We're goint to reach ahead 1 slot, so...
@@ -61,9 +62,7 @@ class Adapters
       end
       a_nxt = @adapters[i+1]
       # If this adapter can reach the next one, add an edge.
-      puts "#{a.class.name}, a: #{a}, a_nxt: #{a_nxt}"
       if a + MAX_DIFF >= a_nxt
-        puts "Adding edge #{a}-#{a_nxt}"
         g.add_edge(a, a_nxt)
       end
     end
