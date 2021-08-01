@@ -1,16 +1,15 @@
 require 'minitest/autorun'
 
-require_relative "accounting"
+require_relative "xmas"
 
-class Day01 < Minitest::Test
+class Day_09 < Minitest::Test
 
-  def test_day_01
+  def test_day
     dir = File.dirname(__FILE__)
     file_name = File.join(dir, "#{dir}.dat")
-    accounting = Accounting.new file_name
-    assert_equal 744475, accounting.find_two_entries
-    assert_equal 70276940, accounting.find_three_entries
-    assert_equal 70276940, accounting.find_three_entries_optimized
+    xmas = Xmas.new file_name, 25
+    assert_equal 1492208709, xmas.invalid_num
+    assert_equal 238243506, xmas.encryption_weakness
   end
 
 end

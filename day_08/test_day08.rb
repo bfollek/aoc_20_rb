@@ -1,16 +1,17 @@
 require 'minitest/autorun'
 
-require_relative "accounting"
+require_relative "console"
 
-class Day01 < Minitest::Test
+class Day08 < Minitest::Test
 
-  def test_day_01
+  def test_day
     dir = File.dirname(__FILE__)
     file_name = File.join(dir, "#{dir}.dat")
-    accounting = Accounting.new file_name
-    assert_equal 744475, accounting.find_two_entries
-    assert_equal 70276940, accounting.find_three_entries
-    assert_equal 70276940, accounting.find_three_entries_optimized
+    c = Console.new
+    instructions = c.load_code file_name
+    _, acc = c.run instructions
+    assert_equal 1446, acc
+    assert_equal 1403, c.swap_codes_and_run(instructions, Instruction::JUMP, Instruction::NO_OP)
   end
 
 end

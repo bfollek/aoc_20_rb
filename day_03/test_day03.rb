@@ -4,7 +4,7 @@ require_relative "tree_counter"
 
 class Day03 < Minitest::Test
 
-  def test_day_03
+  def test_day
     dir = File.dirname(__FILE__)
     file_name = File.join(dir, "#{dir}.dat")
     tree_counter = TreeCounter.new file_name

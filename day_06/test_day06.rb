@@ -1,16 +1,15 @@
 require 'minitest/autorun'
 
-require_relative "accounting"
+require_relative "group"
 
-class Day01 < Minitest::Test
+class Day06 < Minitest::Test
 
-  def test_day_01
+  def test_day
     dir = File.dirname(__FILE__)
     file_name = File.join(dir, "#{dir}.dat")
-    accounting = Accounting.new file_name
-    assert_equal 744475, accounting.find_two_entries
-    assert_equal 70276940, accounting.find_three_entries
-    assert_equal 70276940, accounting.find_three_entries_optimized
+    groups = Group.load_from_file file_name
+    assert_equal 6748, Group.anyone_answered_yes(groups)
+    assert_equal 3445, Group.everyone_answered_yes(groups)
   end
 
 end

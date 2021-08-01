@@ -4,7 +4,7 @@ require_relative "accounting"
 
 class Day01 < Minitest::Test
 
-  def test_day_01
+  def test_day
     dir = File.dirname(__FILE__)
     file_name = File.join(dir, "#{dir}.dat")
     accounting = Accounting.new file_name

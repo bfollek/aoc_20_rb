@@ -1,16 +1,15 @@
 require 'minitest/autorun'
 
-require_relative "accounting"
+require_relative "boarding_pass"
 
-class Day01 < Minitest::Test
+class Day05 < Minitest::Test
 
-  def test_day_01
+  def test_day
     dir = File.dirname(__FILE__)
     file_name = File.join(dir, "#{dir}.dat")
-    accounting = Accounting.new file_name
-    assert_equal 744475, accounting.find_two_entries
-    assert_equal 70276940, accounting.find_three_entries
-    assert_equal 70276940, accounting.find_three_entries_optimized
+    boarding_passes = BoardingPass.load_from_file file_name
+    assert_equal 826, boarding_passes.max_by(&:seat_id).seat_id
+    assert_equal 678, BoardingPass.find_gap(boarding_passes)
   end
 
 end

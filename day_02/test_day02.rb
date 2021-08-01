@@ -4,7 +4,7 @@ require_relative "passwords"
 
 class Day02 < Minitest::Test
 
-  def test_day_02
+  def test_day
     dir = File.dirname(__FILE__)
     file_name = File.join(dir, "#{dir}.dat")
     passwords = Passwords.new file_name

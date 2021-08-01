@@ -4,7 +4,7 @@ require_relative "passport"
 
 class Day04 < Minitest::Test
 
-  def test_day_04
+  def test_day
     dir = File.dirname(__FILE__)
     file_name = File.join(dir, "#{dir}.dat")
     passports = Passport.load_from_file file_name
