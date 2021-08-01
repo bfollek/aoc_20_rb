@@ -52,15 +52,17 @@ class Adapters
     seen = Hash.new(0)
 
     while !q.empty?
-      v = q.pop
-      if seen.has_key?(v)
-        cnt += seen[v]
-        next
-      end
+      v = q.shift
+      # if seen.has_key?(v)
+      #   cnt += seen[v]
+      #   #next
+      # else
+      #   seen[v] = 0
+      # end
       g.each_adjacent(v) do |adj|
         if adj == goal
           cnt += 1
-          seen[v] += 1
+          #seen[adj] += 1
         else
           q << adj
         end
