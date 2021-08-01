@@ -16,6 +16,7 @@ class Adapters
     @adapters << @adapters.last + 3
   end
 
+  # "What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?"
   def joltage_differences
     j1_diff = 0
     j3_diff = 0
@@ -31,6 +32,12 @@ class Adapters
       prev = a
     end
     j1_diff * j3_diff
+  end
+
+  # "What is the total number of distinct ways you can arrange the adapters to connect
+  # the charging outlet to your device?"
+  def distinct_arrangements
+    0
   end
 
   %{

@@ -9,6 +9,7 @@ class Day10 < Minitest::Test
     file_name = File.join(dir, "../testdata/day_10.dat")
     adapters = Adapters.new file_name
     assert_equal 1848, adapters.joltage_differences
+    assert_equal 42, adapters.distinct_arrangements
   end
 
 end
