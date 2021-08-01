@@ -3,6 +3,8 @@ class Adapters
 
   # "The charging outlet has an effective rating of 0 jolts..."
   CHARGING_OUTLET = 0
+  # "Any given adapter can take an input 1, 2, or 3 jolts lower than its rating 
+  # and still produce its rated output joltage."
   MIN_DIFF = 1
   MAX_DIFF = 3
 
