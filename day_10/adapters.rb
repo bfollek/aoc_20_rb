@@ -1,4 +1,7 @@
 # typed: false
+
+require 'rgl/adjacency'
+
 class Adapters
 
   # "The charging outlet has an effective rating of 0 jolts..."
@@ -40,7 +43,7 @@ class Adapters
   # the charging outlet to your device?"
   def distinct_arrangements
     g = build_graph
-    
+    puts "g: #{g}"
     0
   end
 
@@ -49,18 +52,19 @@ class Adapters
 # -------------------------------------------------------------------
 
   def build_graph
+    puts "@adapters: #{@adapters}"
     g = RGL::DirectedAdjacencyGraph.new
-    # @adapters.each do |a|
-    #   @g.add_vertex(a)
-    # end
     @adapters.each_with_index do |a, i|
-      if i == @adapters.size - 1
+      # We're goint to reach ahead 1 slot, so...
+      if i + 1 == @adapters.size
         break
       end
-      nxt = @adapters[i+1]
+      a_nxt = @adapters[i+1]
       # If this adapter can reach the next one, add an edge.
-      if nxt - MAX_DIFF <= a
-        @g.add_edge(a, nxt)
+      puts "#{a.class.name}, a: #{a}, a_nxt: #{a_nxt}"
+      if a + MAX_DIFF >= a_nxt
+        puts "Adding edge #{a}-#{a_nxt}"
+        g.add_edge(a, a_nxt)
       end
     end
     g
