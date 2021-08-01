@@ -42,6 +42,10 @@ class Adapters
     0
   end
 
+# -------------------------------------------------------------------
+  private
+# -------------------------------------------------------------------
+
   %{
 
     I should be able to build the graph such that only nodes within range have edges.
