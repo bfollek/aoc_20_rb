@@ -1,12 +1,12 @@
 require 'minitest/autorun'
 
-require_relative "console"
+require_relative "../day_08/console"
 
 class Day08 < Minitest::Test
 
   def test_day
     dir = File.dirname(__FILE__)
-    file_name = File.join(dir, "#{dir}.dat")
+    file_name = File.join(dir, "../testdata/day_08.dat")
     c = Console.new
     instructions = c.load_code file_name
     _, acc = c.run instructions
