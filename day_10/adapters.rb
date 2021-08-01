@@ -43,15 +43,14 @@ class Adapters
   # the charging outlet to your device?"
   def distinct_arrangements
     g = build_graph
+   
+    goal = @adapters.last    
+    # Memoize for speed. Key is a vertex, value is a bool. int? Use cnt?
+    # This way, we calc each vertex's count just once.
+    seen = {}
     cnt = 0
     q = [@adapters[0]]
-    goal = @adapters.last
-
-    # For speed, we use `seen` to memoize. Key is a vertex, value is its count.
-    # This way, we calc each vertex's count just once.
-    seen = Hash.new(0)
-
-    while !q.empty?
+    until q.empty?
       v = q.shift
       # if seen.has_key?(v)
       #   cnt += seen[v]
@@ -77,7 +76,7 @@ class Adapters
 
   def build_graph
     g = RGL::DirectedAdjacencyGraph.new
-    puts "# of adapters: #{@adapters.size}"
+    #puts "# of adapters: #{@adapters.size}"
     @adapters.each_with_index do |a, i|
       (i+1..@adapters.size - 1).each do |j| 
         a_nxt = @adapters[j]
