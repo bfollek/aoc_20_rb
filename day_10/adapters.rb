@@ -46,12 +46,21 @@ class Adapters
     cnt = 0
     q = [@adapters[0]]
     goal = @adapters.last
-    # TODO The same node may show up multiple times. memoize?
+
+    # For speed, we use `seen` to memoize. Key is a vertex, value is its count.
+    # This way, we calc each vertex's count just once.
+    seen = Hash.new(0)
+
     while !q.empty?
       v = q.pop
+      if seen.has_key?(v)
+        cnt += seen[v]
+        next
+      end
       g.each_adjacent(v) do |adj|
         if adj == goal
           cnt += 1
+          seen[v] += 1
         else
           q << adj
         end
@@ -66,6 +75,7 @@ class Adapters
 
   def build_graph
     g = RGL::DirectedAdjacencyGraph.new
+    puts "# of adapters: #{@adapters.size}"
     @adapters.each_with_index do |a, i|
       (i+1..@adapters.size - 1).each do |j| 
         a_nxt = @adapters[j]
@@ -79,7 +89,7 @@ class Adapters
     end
     # Remember that g.to_s sorts alpha, which can be misleading.
     # https://www.rubydoc.info/github/monora/rgl/RGL/Graph#to_s-instance_method
-    #puts "g: #{g}" 
+    #puts "g: #{g}"
     g
   end
 

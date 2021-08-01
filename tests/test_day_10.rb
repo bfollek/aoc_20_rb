@@ -12,10 +12,15 @@ class Day10 < Minitest::Test
     assert_equal 35, adapters.joltage_differences
     assert_equal 8, adapters.distinct_arrangements
 
-    # file_name = File.join(dir, "../testdata/day_10.dat")
-    # adapters = Adapters.new file_name
-    # assert_equal 1848, adapters.joltage_differences
-    # assert_equal 42, adapters.distinct_arrangements
+    file_name = File.join(dir, "../testdata/day_10_test_2.dat")
+    adapters = Adapters.new file_name
+    assert_equal 220, adapters.joltage_differences
+    assert_equal 19208, adapters.distinct_arrangements
+
+    file_name = File.join(dir, "../testdata/day_10.dat")
+    adapters = Adapters.new file_name
+    assert_equal 1848, adapters.joltage_differences
+    assert_equal 42, adapters.distinct_arrangements
   end
 
 end
