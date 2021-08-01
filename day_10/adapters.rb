@@ -19,6 +19,7 @@ class Adapters
     # than the highest-rated adapter in your bag. (If your adapter list were 3, 9, and 6, 
     # your device's built-in adapter would be rated for 12 jolts.)"
     @adapters << @adapters.last + 3
+    #puts "adapters: #{@adapters}"
   end
 
   # "What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?"
@@ -43,11 +44,12 @@ class Adapters
   # the charging outlet to your device?"
   def distinct_arrangements
     g = build_graph
-   
-    goal = @adapters.last    
+    goal = @adapters.last 
+
     # Memoize for speed. Key is a vertex, value is a bool. int? Use cnt?
     # This way, we calc each vertex's count just once.
     seen = {}
+   
     cnt = 0
     q = [@adapters[0]]
     until q.empty?
@@ -68,6 +70,11 @@ class Adapters
       end
     end
     return cnt
+  end
+
+  def distinct_arrangements_2
+    g = build_graph
+    goal = @adapters.last 
   end
 
 # -------------------------------------------------------------------
