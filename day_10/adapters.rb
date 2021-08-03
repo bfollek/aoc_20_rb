@@ -44,28 +44,14 @@ class Adapters
   # the charging outlet to your device?"
   def distinct_arrangements
     g = build_graph
-    #return distinct_arrangements_loop(g, @adapters[0], @adapters.last)
-
     goal = @adapters.last 
-
-    # Memoize for speed. Key is a vertex, value is a bool. int? Use cnt?
-    # This way, we calc each vertex's count just once.
-    seen = {}
-   
     cnt = 0
     q = [@adapters[0]]
     until q.empty?
       v = q.shift
-      # if seen.has_key?(v)
-      #   cnt += seen[v]
-      #   #next
-      # else
-      #   seen[v] = 0
-      # end
       g.each_adjacent(v) do |adj|
         if adj == goal
           cnt += 1
-          #seen[adj] += 1
         else
           q << adj
         end
@@ -77,37 +63,6 @@ class Adapters
 # -------------------------------------------------------------------
   private
 # -------------------------------------------------------------------
-
-
-  def distinct_arrangements_loop(g, start, finish)
-    total = 1
-    adjacent = g.adjacent_vertices(start).filter { |adj| adj != finish }
-    puts "#{start} -> #{adjacent}"
-    total *= adjacent.size
-    adjacent.each do |adj|
-      total *= distinct_arrangements_loop(g, adj, finish)
-    end
-    total
-  end
-
-  # reverse the graph, then multiply adjacent_vertices till start?
-  # This has the advantage that we know everything connects, but we kind of know that anyway.
-
-  #def count_distinct_arrangements(g, start, finish)
-  #  total = start
-  #
-  #end
-  # def distinct_arrangements_2
-  #   g = build_graph
-  #   start = @adapters[0]
-  #   finish = @adapters.last 
-  #   total = 1
-  #   while start <> finish
-  #     adj = g.adjacent_vertices(start)
-  #     total = total * g.adjacent_vertices(start)
-  #     something recursive...
-  #   end
-  # end
 
   def build_graph
     g = RGL::DirectedAdjacencyGraph.new
