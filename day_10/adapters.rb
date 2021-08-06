@@ -60,9 +60,30 @@ class Adapters
     return cnt
   end
 
+  def distinct_arrangements_2
+    g = build_graph
+    # Work backwards
+    path_count(g.reverse, @adapters.last)
+  end
+
 # -------------------------------------------------------------------
   private
 # -------------------------------------------------------------------
+
+  def path_count(g, v)
+    total = 1
+    adj_cnt = g.adjacent_vertices(v).size
+    puts "adj_cnt: #{adj_cnt}"
+    total *= adj_cnt
+    g.each_adjacent(v) do |adj|
+      if adj == @adapters[0]
+        next
+      end
+      total *= path_count(g, adj)
+      #puts "b: #{b}, adj: #{adj}, bag_cnt: #{bag_cnt}, total: #{total}"
+    end
+    total
+  end
 
   def build_graph
     g = RGL::DirectedAdjacencyGraph.new
