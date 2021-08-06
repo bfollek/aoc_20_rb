@@ -21,16 +21,16 @@ class Day10 < Minitest::Test
     adapters = Adapters.new file_name
     assert_equal 220, adapters.joltage_differences
     assert_equal 19208, adapters.distinct_arrangements
+    assert_equal 19208, adapters.distinct_arrangements_2
   end
 
   def test_day_large
-    skip
     dir = File.dirname(__FILE__)
 
     file_name = File.join(dir, "../testdata/day_10.dat")
     adapters = Adapters.new file_name
     assert_equal 1848, adapters.joltage_differences
-    assert_equal 42, adapters.distinct_arrangements
+    assert_equal 42, adapters.distinct_arrangements_2
   end
 
 end

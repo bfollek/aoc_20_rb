@@ -62,27 +62,35 @@ class Adapters
 
   def distinct_arrangements_2
     g = build_graph
-    # Work backwards
-    path_count(g.reverse, @adapters.last)
+    # Work backwards so that we look only at vertices that reach the finish
+    path_count(g.reverse)
   end
 
 # -------------------------------------------------------------------
   private
 # -------------------------------------------------------------------
 
-  def path_count(g, v)
-    total = 1
-    adj_cnt = g.adjacent_vertices(v).size
-    puts "adj_cnt: #{adj_cnt}"
-    total *= adj_cnt
-    g.each_adjacent(v) do |adj|
-      if adj == @adapters[0]
-        next
+  def path_count(g)
+    cnt = 0
+    g.vertices.each do |v|
+      if adj_count(g, v) > 1
+        cnt += adj_count(g, v)
       end
-      total *= path_count(g, adj)
-      #puts "b: #{b}, adj: #{adj}, bag_cnt: #{bag_cnt}, total: #{total}"
     end
-    total
+    cnt + 1
+  end
+
+  def adj_count(g, v)
+    g.adjacent_vertices(v).size
+  end
+
+  def any_adj_branches?(g, v)
+    g.each_adjacent(v) do |adj|
+      if adj_count(g, adj) > 1
+        return true
+      end
+    end
+    false
   end
 
   def build_graph
