@@ -44,9 +44,9 @@ class Adapters
   # the charging outlet to your device?"
   def distinct_arrangements
     g = build_graph
-    goal = @adapters.last 
+    goal = @adapters.last
     cnt = 0
-    q = [@adapters[0]]
+    q = [@adapters.first]
     until q.empty?
       v = q.shift
       g.each_adjacent(v) do |adj|
