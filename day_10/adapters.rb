@@ -42,18 +42,29 @@ class Adapters
 
   # "What is the total number of distinct ways you can arrange the adapters to connect
   # the charging outlet to your device?"
+
+  TODO dfs + seen? I dunno.
+  
   def distinct_arrangements
     g = build_graph
     goal = @adapters.last
+    seen = {}
     cnt = 0
     q = [@adapters.first]
     until q.empty?
       v = q.shift
       g.each_adjacent(v) do |adj|
-        if adj == goal
-          cnt += 1
+        if seen[adj]
+          cnt += seen[adj]
         else
-          q << adj
+          adj_cnt = 0
+          if adj == goal
+            cnt += 1
+            adj_cnt += 1
+            seen[adj] = adj_cnt
+          else
+            q << adj
+          end
         end
       end
     end
