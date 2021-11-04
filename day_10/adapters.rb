@@ -43,7 +43,7 @@ class Adapters
   # "What is the total number of distinct ways you can arrange the adapters to connect
   # the charging outlet to your device?"
 
-  TODO dfs + seen? I dunno.
+  # TODO dfs + seen? I dunno.
   
   def distinct_arrangements
     g = build_graph
