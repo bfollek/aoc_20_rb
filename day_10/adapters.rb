@@ -79,10 +79,6 @@ class Adapters
   end
 
   def count_all_paths(g, current, destination, visited, cnt)
-    count_all_paths_loop(g, current, destination, visited, cnt)
-  end
-
-  def count_all_paths_loop(g, current, destination, visited, cnt)
     # Mark the current vertex as visited.
     visited[current] = true
 
