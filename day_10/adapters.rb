@@ -42,9 +42,6 @@ class Adapters
 
   # "What is the total number of distinct ways you can arrange the adapters to connect
   # the charging outlet to your device?"
-
-  # TODO dfs + seen? I dunno.
-  
   def distinct_arrangements
     g = build_graph
     goal = @adapters.last
@@ -68,6 +65,42 @@ class Adapters
         end
       end
     end
+    return cnt
+  end
+
+  # From https://www.geeksforgeeks.org/find-paths-given-source-destination/
+  # No faster than my weird solution.
+  def distinct_arrangements_2
+    g = build_graph
+    # Mark all the vertices as not visited.
+    visited = {}
+    g.each_vertex { |v| visited[v] = false}
+    count_all_paths(g, @adapters.first, @adapters.last, visited, 0)
+  end
+
+  def count_all_paths(g, current, destination, visited, cnt)
+    count_all_paths_loop(g, current, destination, visited, cnt)
+  end
+
+  def count_all_paths_loop(g, current, destination, visited, cnt)
+    # Mark the current vertex as visited.
+    visited[current] = true
+
+    # If current vertex is same as destination, then count path.
+    if current == destination
+      cnt += 1
+    else
+      # Current vertex is not the destination.
+      # Recurse for all the unvisited vertices adjacent to this vertex.
+      g.each_adjacent(current) do |av|
+        if visited[av] == false
+          cnt = count_all_paths(g, av, destination, visited, cnt)
+        end
+      end
+    end
+
+    # Mark the current vertex as not visited.
+    visited[current] = false
     return cnt
   end
 
