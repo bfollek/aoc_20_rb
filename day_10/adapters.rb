@@ -46,20 +46,7 @@ class Adapters
     @call_counter = 0
     g = build_graph
     result = distinct_arrangements_helper(g, @adapters.first, @adapters.last)
-    # total = 0
-    # goal = @adapters.last
-    # puts "@adapters: #{@adapters}"
-    # rng = @adapters[1...@adapters.size - 1]
-    # puts "rng: #{rng}"
-    # rng.each_with_index do |adapter, i|
-    #   prev = @adapters[i]
-    #   if adapter - MAX_DIFF <= prev
-    #     puts "prev: #{prev}, adapter: #{adapter}"
-    #     total += distinct_arrangements_helper(g, adapter, goal)
-    #   end
-    # end
     puts "calls: #{@call_counter}"
-    # total
     result
   end
 
