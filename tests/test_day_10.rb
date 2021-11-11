@@ -31,7 +31,7 @@ class Day10 < Minitest::Test
     adapters = Adapters.new file_name
     assert_equal 1848, adapters.joltage_differences
     skip
-    assert_equal -1, adapters.distinct_arrangements
+    #assert_equal -1, adapters.distinct_arrangements
     assert_equal -1, adapters.distinct_arrangements_2
   end
 
