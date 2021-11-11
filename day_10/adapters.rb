@@ -51,20 +51,33 @@ class Adapters
   end
 
   def distinct_arrangements_helper(g, start, goal)
-    @call_counter += 1
     cnt = 0
     q = [start]
     until q.empty?
       v = q.shift
-      g.each_adjacent(v) do |adj|
-        if adj == goal
-          cnt += 1
-        else
-          q << adj
-        end
-      end
+      cnt += count_adjacent(g, goal, v, q)
+      # g.each_adjacent(v) do |adj|
+      #   if adj == goal
+      #     cnt += 1
+      #   else
+      #     q << adj
+      #   end
+      # end
     end
     return cnt
+  end
+
+  def count_adjacent(g, goal, v, q)
+    @call_counter += 1
+    cnt = 0
+    g.each_adjacent(v) do |adj|
+      if adj == goal
+        cnt += 1
+      else
+        q << adj
+      end
+    end
+    cnt
   end
 
   # From https://www.geeksforgeeks.org/find-paths-given-source-destination/
