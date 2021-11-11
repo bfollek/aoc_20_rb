@@ -44,32 +44,35 @@ class Adapters
   # "What is the total number of distinct ways you can arrange the adapters to connect
   # the charging outlet to your device?"
   def distinct_arrangements
-    result = distinct_arrangements_helper
-    puts "calls: #{@call_counter}"
-    result
+    g = build_graph
+    distinct_arrangements_helper(g, @adapters.first, @adapters.last)
+    # total = 0
+    # goal = @adapters.last
+    # puts "@adapters: #{@adapters}"
+    # rng = @adapters[1...@adapters.size - 1]
+    # puts "rng: #{rng}"
+    # rng.each_with_index do |adapter, i|
+    #   prev = @adapters[i]
+    #   if adapter - MAX_DIFF <= prev
+    #     puts "prev: #{prev}, adapter: #{adapter}"
+    #     total += distinct_arrangements_helper(g, adapter, goal)
+    #   end
+    # end
+    # puts "calls: #{@call_counter}"
+    # total
   end
 
-  def distinct_arrangements_helper
+  def distinct_arrangements_helper(g, start, goal)
     @call_counter += 1
-    g = build_graph
-    goal = @adapters.last
-    seen = {}
     cnt = 0
-    q = [@adapters.first]
+    q = [start]
     until q.empty?
       v = q.shift
       g.each_adjacent(v) do |adj|
-        if seen[adj]
-          cnt += seen[adj]
+        if adj == goal
+          cnt += 1
         else
-          adj_cnt = 0
-          if adj == goal
-            cnt += 1
-            adj_cnt += 1
-            seen[adj] = adj_cnt
-          else
-            q << adj
-          end
+          q << adj
         end
       end
     end
