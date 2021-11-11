@@ -12,6 +12,7 @@ class Adapters
   MAX_DIFF = 3
 
   def initialize(file_name)
+    @call_counter = 0
     @adapters = [CHARGING_OUTLET]
     File.foreach(file_name) { |line| @adapters << line.chomp.to_i }
     @adapters.sort!
@@ -43,10 +44,13 @@ class Adapters
   # "What is the total number of distinct ways you can arrange the adapters to connect
   # the charging outlet to your device?"
   def distinct_arrangements
-    distinct_arrangements_helper
+    result = distinct_arrangements_helper
+    puts "calls: #{@call_counter}"
+    result
   end
 
   def distinct_arrangements_helper
+    @call_counter += 1
     g = build_graph
     goal = @adapters.last
     seen = {}
