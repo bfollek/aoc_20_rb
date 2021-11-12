@@ -1,6 +1,6 @@
 # aoc_20_rb
 
-Advent of Code 2020 in ruby, with an occasional serving of [sorbet](https://sorbet.org/)
+Advent of Code 2020 in ruby, with a couple of servings of [sorbet](https://sorbet.org/)
 
 ## Running Tests
 
