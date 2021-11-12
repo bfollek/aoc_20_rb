@@ -47,7 +47,7 @@ Hooking up sorbet meant some code changes that feel a bit un-rubyish, especially
 
 ### Day 6 - done.
 
-### Day 7 - done.
+### Day 7 - done. Uses [RGL](https://github.com/monora/rgl).
 
 ### Day 8 - done.
 
