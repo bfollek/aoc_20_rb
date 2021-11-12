@@ -45,19 +45,14 @@ class Adapters
   def distinct_arrangements
     @call_counter = 0
     g = build_graph
-    result = distinct_arrangements_helper(g, @adapters.first, @adapters.last)
-    puts "calls: #{@call_counter}"
-    result
-  end
-
-  def distinct_arrangements_helper(g, start, goal)
     cnt = 0
-    q = [start]
+    q = [@adapters.first]
     until q.empty?
       v = q.shift
-      cnt += count_adjacent(g, goal, v, q)
+      cnt += count_adjacent(g, @adapters.last, v, q)
     end
-    return cnt
+    puts "calls: #{@call_counter}"
+    cnt
   end
 
   def count_adjacent(g, goal, v, q)
