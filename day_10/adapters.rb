@@ -1,7 +1,5 @@
 # typed: false
 
-require "rgl/adjacency"
-
 class Adapters
 
   # "The charging outlet has an effective rating of 0 jolts..."
@@ -63,30 +61,5 @@ class Adapters
       @path_cache[i] = cnt
       cnt
     end
-  end
-
-  # -------------------------------------------------------------------
-  private
-
-  # -------------------------------------------------------------------
-
-  def build_graph
-    g = RGL::DirectedAdjacencyGraph.new
-    #puts "# of adapters: #{@adapters.size}"
-    @adapters.each_with_index do |a, i|
-      (i + 1..@adapters.size - 1).each do |j|
-        a_nxt = @adapters[j]
-        # If this adapter can reach the next one, add an edge.
-        if a + MAX_DIFF >= a_nxt
-          g.add_edge(a, a_nxt)
-        else
-          break # inner loop - out of range == done
-        end
-      end
-    end
-    # Remember that g.to_s sorts alpha, which can be misleading.
-    # https://www.rubydoc.info/github/monora/rgl/RGL/Graph#to_s-instance_method
-    #puts "g: #{g}"
-    g
   end
 end
