@@ -56,13 +56,6 @@ class Adapters
     until q.empty?
       v = q.shift
       cnt += count_adjacent(g, goal, v, q)
-      # g.each_adjacent(v) do |adj|
-      #   if adj == goal
-      #     cnt += 1
-      #   else
-      #     q << adj
-      #   end
-      # end
     end
     return cnt
   end
