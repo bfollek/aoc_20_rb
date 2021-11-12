@@ -1,9 +1,8 @@
-require 'minitest/autorun'
+require "minitest/autorun"
 
-require_relative "../day_07/luggage"
+require_relative "../code/day_07/luggage"
 
 class Day07 < Minitest::Test
-
   def test_day
     dir = File.dirname(__FILE__)
     file_name = File.join(dir, "../testdata/day_07.dat")
@@ -12,5 +11,4 @@ class Day07 < Minitest::Test
     assert_equal 235, luggage.count_paths_to_bag(my_bag)
     assert_equal 158493, luggage.count_bags_in_bag(my_bag)
   end
-
 end

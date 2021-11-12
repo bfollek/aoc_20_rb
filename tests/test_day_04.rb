@@ -1,9 +1,8 @@
-require 'minitest/autorun'
+require "minitest/autorun"
 
-require_relative "../day_04/passport"
+require_relative "../code/day_04/passport"
 
 class Day04 < Minitest::Test
-
   def test_day
     dir = File.dirname(__FILE__)
     file_name = File.join(dir, "../testdata/day_04.dat")
@@ -13,5 +12,4 @@ class Day04 < Minitest::Test
     valid = passports.select { |pp| pp.valid? }
     assert_equal 114, valid.size
   end
-
 end

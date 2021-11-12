@@ -1,6 +1,6 @@
 require "minitest/autorun"
 
-require_relative "../day_10/adapters"
+require_relative "../code/day_10/adapters"
 
 class Day10 < Minitest::Test
   def test_day_small
