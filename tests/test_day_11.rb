@@ -5,7 +5,7 @@ require "minitest/autorun"
 class Day11 < Minitest::Test
   def test_day
     dir = File.dirname(__FILE__)
-    file_name = File.join(dir, "../testdata/day_11.dat")
+    file_name = File.join(dir, "../data/day_11.dat")
     #TODO
   end
 end
