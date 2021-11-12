@@ -10,7 +10,6 @@ class Day10 < Minitest::Test
     adapters = Adapters.new file_name
     assert_equal 35, adapters.joltage_differences
     assert_equal 8, adapters.distinct_arrangements
-    #assert_equal 8, adapters.distinct_arrangements_2
   end
 
   def test_day_medium
@@ -19,8 +18,7 @@ class Day10 < Minitest::Test
     file_name = File.join(dir, "../testdata/day_10_test_2.dat")
     adapters = Adapters.new file_name
     assert_equal 220, adapters.joltage_differences
-    #assert_equal 19208, adapters.distinct_arrangements
-    #assert_equal 19208, adapters.distinct_arrangements_2
+    assert_equal 19208, adapters.distinct_arrangements
   end
 
   def test_day_large
@@ -29,8 +27,6 @@ class Day10 < Minitest::Test
     file_name = File.join(dir, "../testdata/day_10.dat")
     adapters = Adapters.new file_name
     assert_equal 1848, adapters.joltage_differences
-    skip
-    assert_equal -1, adapters.distinct_arrangements
-    #assert_equal -1, adapters.distinct_arrangements_2
+    assert_equal 8099130339328, adapters.distinct_arrangements
   end
 end

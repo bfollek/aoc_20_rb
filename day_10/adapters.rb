@@ -42,7 +42,46 @@ class Adapters
 
   # "What is the total number of distinct ways you can arrange the adapters to connect
   # the charging outlet to your device?"
+  # Solution from https://0xdf.gitlab.io/adventofcode2020/10
   def distinct_arrangements
+    @path_cache = {}
+    paths_to_end(0)
+  end
+
+  def paths_to_end(i)
+    return @path_cache[i] if @path_cache[i]
+
+    if i == @adapters.size - 1 # Last adapter
+      1
+    else
+      cnt = 0
+      upper_bound = [i + MAX_DIFF + 1, @adapters.size].min
+      (i + 1...upper_bound).each do |j|
+        next if @adapters[j] > @adapters[i] + MAX_DIFF
+        cnt += paths_to_end(j)
+      end
+      @path_cache[i] = cnt
+      cnt
+    end
+  end
+
+  #   @lru_cache(maxsize=256)
+  # def paths_to_end(i):
+  #     if i == len(adapters) - 1:
+  #         return 1
+  #     return sum(
+  #         [
+  #             paths_to_end(j)
+  #             for j in range(i + 1, min(i + 4, len(adapters)))
+  #             if adapters[j] - adapters[i] <= 3
+  #         ]
+  #     )
+  #
+  #print(f"Part 2: {paths_to_end(0)}")
+
+  # "What is the total number of distinct ways you can arrange the adapters to connect
+  # the charging outlet to your device?"
+  def distinct_arrangements_1
     @call_counter = 0
     g = build_graph
     puts g.sort
@@ -66,12 +105,12 @@ class Adapters
         q << adj
       end
     end
-    puts "in count_adjacent for #{v}, returning #{cnt}"
+    #puts "in count_adjacent for #{v}, returning #{cnt}"
     cnt
   end
 
   # From https://www.geeksforgeeks.org/find-paths-given-source-destination/
-  # No faster than my weird solution.
+  # No faster than my solution.
   def distinct_arrangements_2
     g = build_graph
     # Mark all the vertices as not visited.
