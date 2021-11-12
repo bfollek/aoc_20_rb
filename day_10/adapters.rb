@@ -45,6 +45,7 @@ class Adapters
   def distinct_arrangements
     @call_counter = 0
     g = build_graph
+    puts g
     cnt = 0
     q = [@adapters.first]
     until q.empty?
