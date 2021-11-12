@@ -57,7 +57,7 @@ Hooking up sorbet meant some code changes that feel a bit un-rubyish, especially
 
 ## Notes
 
-### RGL Graph Library
+### [RGL Graph Library](https://github.com/monora/rgl)
 
 Given `g = RGL::DirectedAdjacencyGraph.new`, remember that `g.to_s` sorts alpha, which can be misleading if you do something like `puts "g: #{g}"`. [More info.](https://www.rubydoc.info/github/monora/rgl/RGL/Graph#to_s-instance_method)
 
