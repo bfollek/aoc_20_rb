@@ -45,7 +45,7 @@ class Adapters
   def distinct_arrangements
     @call_counter = 0
     g = build_graph
-    puts g
+    puts g.sort
     cnt = 0
     q = [@adapters.first]
     until q.empty?
@@ -66,6 +66,7 @@ class Adapters
         q << adj
       end
     end
+    puts "in count_adjacent for #{v}, returning #{cnt}"
     cnt
   end
 
