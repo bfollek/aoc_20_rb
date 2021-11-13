@@ -20,21 +20,18 @@ class FloorPlan
     num_all_occupied
   end
 
-  # -------------------------------------------------------------------
-
-  private
-
-  # -------------------------------------------------------------------
-
   def dump
-    @layout.each do |row|
-      puts row.join
+    puts "\n"
+    @layout.each_with_index do |row, i|
+      puts sprintf("%02d: %s", i + 1, row.join)
     end
+    puts "\n"
   end
 
   def update_till_steady
     loop do
       changed = update_seat_state
+      dump
       if !changed
         break
       end
@@ -53,31 +50,32 @@ class FloorPlan
     cnt
   end
 
+  # The following rules are applied to every seat simultaneously:
   # If a seat is empty (L) and there are no occupied seats adjacent to it, the seat becomes occupied.
   # If a seat is occupied (#) and four or more seats adjacent to it are also occupied, the seat becomes empty.
   # Otherwise, the seat's state does not change.
+  #
+  # Because of the "simultaneously" requirement, we don't want to change the layout as we go. Instead,
+  # we want to build a whole new layout, and replace it. In other words, we don't want earlier seat changes
+  # to affect later seat changes. All seat changes should run against the original point-in-time layout.
   def update_seat_state
     changed = false
+    new_layout = Array.new(@max_rows) { Array.new(@max_cols) }
     @layout.each_with_index do |row, i|
       row.each_with_index do |col, j|
-        if col == FLOOR
-          next
-        end
-        num_occ = num_occupied_adjacent(i, j)
-        case col
-        when EMPTY
-          if num_occ == 0
-            #@layout[i][j] = OCCUPIED
-            col = OCCUPIED
-            changed = true
-          end
-        when OCCUPIED
-          if num_occ >= 4
-            @layout[i][j] = EMPTY
-            changed = true
-          end
+        if col == EMPTY && num_occupied_adjacent(i, j) == 0
+          new_layout[i][j] = OCCUPIED
+          changed = true
+        elsif col == OCCUPIED && num_occupied_adjacent(i, j) >= 4
+          new_layout[i][j] = EMPTY
+          changed = true
+        else
+          new_layout[i][j] = col
         end
       end
+    end
+    if changed
+      @layout = new_layout
     end
     changed
   end
