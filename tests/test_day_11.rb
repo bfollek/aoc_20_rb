@@ -11,5 +11,8 @@ class Day11 < Minitest::Test
     line_61 = "..L.L..L...L..L.L........L.L.LLL..L.L...LLL..L..........L........L....LLLL.LL...L......LL.."
     assert_equal line_61, floor_plan.layout[60].join, "Make sure we're loading rows correctly"
     assert_equal "L", floor_plan.layout[60][4], "Make sure we're loading columns correctly"
+
+    changed = floor_plan.update_seat_state
+    puts changed
   end
 end
