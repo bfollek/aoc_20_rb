@@ -83,12 +83,22 @@ class FloorPlan
   def num_occupied_adjacent(row_index, col_index)
     cnt = 0
     (row_index - 1..row_index + 1).each do |i|
-      if i < 0 || i >= @max_rows
-        next
+      #if i == row_index
+      #  next
+      #end
+      if i < 0 # Wrap
+        i = @max_rows - 1
+      elsif i >= @max_rows
+        i = 0
       end
       (col_index - 1..col_index + 1).each do |j|
-        if j < 0 || j >= @max_cols
+        if i == row_index && j == col_index
           next
+        end
+        if j < 0
+          j = @max_cols - 1
+        elsif j >= @max_cols
+          j = 0
         end
         if layout[i][j] == OCCUPIED
           cnt += 1
