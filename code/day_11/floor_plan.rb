@@ -67,7 +67,8 @@ class FloorPlan
         case col
         when EMPTY
           if num_occ == 0
-            @layout[i][j] = OCCUPIED
+            #@layout[i][j] = OCCUPIED
+            col = OCCUPIED
             changed = true
           end
         when OCCUPIED
