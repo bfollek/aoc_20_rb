@@ -31,7 +31,6 @@ class FloorPlan
   def update_till_steady
     loop do
       changed = update_seat_state
-      dump
       if !changed
         break
       end
@@ -83,22 +82,15 @@ class FloorPlan
   def num_occupied_adjacent(row_index, col_index)
     cnt = 0
     (row_index - 1..row_index + 1).each do |i|
-      #if i == row_index
-      #  next
-      #end
-      if i < 0 # Wrap
-        i = @max_rows - 1
-      elsif i >= @max_rows
-        i = 0
+      if i < 0 || i >= @max_rows
+        next
       end
       (col_index - 1..col_index + 1).each do |j|
         if i == row_index && j == col_index
           next
         end
-        if j < 0
-          j = @max_cols - 1
-        elsif j >= @max_cols
-          j = 0
+        if j < 0 || j >= @max_cols
+          next
         end
         if layout[i][j] == OCCUPIED
           cnt += 1

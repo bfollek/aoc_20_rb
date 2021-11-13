@@ -53,7 +53,9 @@ Hooking up sorbet meant some code changes that feel a bit un-rubyish, especially
 
 ### Day 9 - done.
 
-### Day 10 - Part 1 done. Part 2 done with help from https://0xdf.gitlab.io/adventofcode2020/10. I translated their python solution.
+### Day 10 - done. For part 2, I needed help from https://0xdf.gitlab.io/adventofcode2020/10. I translated their python solution.
+
+### Day 11 - Part 1 done.
 
 ## Notes
 
