@@ -15,6 +15,23 @@ class FloorPlan
     #puts "@max_rows: #{@max_rows}, @max_cols: #{@max_cols}"
   end
 
+  def part_1
+    update_till_steady
+    num_all_occupied
+  end
+
+  # -------------------------------------------------------------------
+
+  private
+
+  # -------------------------------------------------------------------
+
+  def dump
+    @layout.each do |row|
+      puts row.join
+    end
+  end
+
   def update_till_steady
     loop do
       changed = update_seat_state
@@ -43,16 +60,19 @@ class FloorPlan
     changed = false
     @layout.each_with_index do |row, i|
       row.each_with_index do |col, j|
+        if col == FLOOR
+          next
+        end
         num_occ = num_occupied_adjacent(i, j)
         case col
         when EMPTY
           if num_occ == 0
-            col = OCCUPIED
+            @layout[i][j] = OCCUPIED
             changed = true
           end
         when OCCUPIED
           if num_occ >= 4
-            col = EMPTY
+            @layout[i][j] = EMPTY
             changed = true
           end
         end
